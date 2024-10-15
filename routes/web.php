@@ -1,9 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth\SocialAuthController;
 
 /*
-|--------------------------------------------------------------------------
+|-----------------------------------------------------------------------    ---
 | Web Routes
 |--------------------------------------------------------------------------
 |
@@ -34,3 +38,6 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
     Route::post('posts/{post_id}/report', [\App\Http\Controllers\CommunityPostController::class, 'report'])->name('post.report');
 });
 
+
+Route::get('auth/google', [SocialAuthController::class, 'redirectToGoogle'])->name('auth.google');
+Route::get('auth/google/callback', [SocialAuthController::class, 'handleGoogleCallback']);

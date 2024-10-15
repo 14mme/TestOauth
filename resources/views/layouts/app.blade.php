@@ -20,6 +20,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     @livewireStyles
 </head>
 <body>
@@ -65,8 +66,8 @@
                                         {{ __('My Communities') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -92,7 +93,7 @@
                             <div class="card-header">Newest posts</div>
 
                             <div class="card-body">
-                                @foreach($newestPosts as $post)
+                                @foreach($posts as $post)
                                     <a href="{{ route('communities.posts.show', [$post->id]) }}">{{ $post->title }}</a>
                                     <div class="mt-1">{{ $post->created_at->diffForHumans() }}</div>
                                     <hr />
@@ -104,7 +105,7 @@
                             <div class="card-header">Newest communities</div>
 
                             <div class="card-body">
-                                @foreach($newestCommunities as $community)
+                                @foreach($communities as $community)
                                     <a href="{{ route('communities.show', $community) }}">{{ $community->name }}</a>
                                     ({{ $community->posts_count }} posts)
                                     <div class="mt-1">{{ $community->created_at->diffForHumans() }}</div>
@@ -118,6 +119,7 @@
         </main>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
     $(document).ready(function() {
         $('.select2').select2();

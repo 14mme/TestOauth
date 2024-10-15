@@ -17,8 +17,8 @@
 
                         @error('email')
                         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                            <strong>{{ $message }}</strong>
+                        </span>
                         @enderror
                     </div>
                 </div>
@@ -33,8 +33,8 @@
 
                         @error('password')
                         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                            <strong>{{ $message }}</strong>
+                        </span>
                         @enderror
                     </div>
                 </div>
@@ -63,6 +63,18 @@
                                 {{ __('Forgot Your Password?') }}
                             </a>
                         @endif
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="form-group row mb-0">
+                    <p class="text-center">or</p>
+                    <div class="text-center">
+                        <a href="{{ route('auth.google') }}" class="btn btn-success btn-google">
+                        <i class="fa fa-google"></i>
+                        Google
+                        </a>
                     </div>
                 </div>
             </form>

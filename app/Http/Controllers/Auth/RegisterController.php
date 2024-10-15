@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Post;
+use App\Models\Community;
 
 class RegisterController extends Controller
 {
@@ -39,6 +41,14 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    public function showRegistrationForm()
+    {
+        $posts = Post::latest()->take(5)->get(); 
+        $communities = Community::withCount('posts')->latest()->take(5)->get();
+
+        return view('auth.register', compact('posts','communities'));
     }
 
     /**
